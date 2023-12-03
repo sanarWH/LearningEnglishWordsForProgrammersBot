@@ -13,7 +13,7 @@ fun main() {
 
     var wordCount = 2
 
-    while (wordsFile[wordCount] < wordCount){
+    while (wordsFile[wordCount] < wordCount) {
         println(wordsFile.readLines()[wordCount])
     }
 }
