@@ -15,8 +15,7 @@ fun main() {
 
     for (i in readWorldsFile) {
         val split = i.split("|")
-        listOfDictionary.add(Word(split[0], split[1], split[2]))
-        listOfDictionary[2] :? 0
+        listOfDictionary.add(Word(split[0], split[1], split[2].toIntOrNull()))
     }
 
     println(listOfDictionary)
