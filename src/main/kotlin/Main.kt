@@ -4,14 +4,25 @@ fun main() {
 
     val wordsFile: File = File("words.txt")
     wordsFile.createNewFile()
-    wordsFile.writeText("") //это строка для того, чтобы при каждов новом запуске функции мэйн очищать файл
-    wordsFile.appendText("hello привет \n")
-    wordsFile.appendText("dog собака\n")
-    wordsFile.appendText("cat кошка\n")
+    wordsFile.writeText("") //это строка для того, чтобы при каждом новом запуске функции мэйн очищать файл
+    wordsFile.appendText("hello|привет|1\n")
+    wordsFile.appendText("dog|собака|1\n")
+    wordsFile.appendText("cat|кошка|1\n")
 
     val readWorldsFile = wordsFile.readLines()
 
+    val listOfDictionary: MutableList<Word> = mutableListOf()
+
     for (i in readWorldsFile) {
-        println(i)
+        val split = i.split("|")
+        listOfDictionary.add(Word(split[0], split[1], split[2].toIntOrNull()))
     }
+
+    println(listOfDictionary)
 }
+
+data class Word (
+    val original: String,
+    val translate: String,
+    val correctAnswersCount: Int? = 0
+)
